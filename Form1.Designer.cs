@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.listBox_JoueurDispo = new System.Windows.Forms.ListBox();
             this.lblTitre = new System.Windows.Forms.Label();
@@ -39,6 +40,9 @@
             this.btnRetirer = new System.Windows.Forms.Button();
             this.btnDemarer = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.toolTip_NbJoueur = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider_NbJoueur = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_NbJoueur)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox_JoueurDispo
@@ -132,6 +136,7 @@
             this.btnDemarer.TabIndex = 8;
             this.btnDemarer.Text = "Démarrer";
             this.btnDemarer.UseVisualStyleBackColor = true;
+            this.btnDemarer.Click += new System.EventHandler(this.btnDemarer_Click);
             // 
             // btnQuitter
             // 
@@ -145,11 +150,15 @@
             this.btnQuitter.UseVisualStyleBackColor = true;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
+            // errorProvider_NbJoueur
+            // 
+            this.errorProvider_NbJoueur.ContainerControl = this;
+            // 
             // frmAcceuil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 616);
+            this.ClientSize = new System.Drawing.Size(650, 625);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnDemarer);
             this.Controls.Add(this.btnRetirer);
@@ -166,6 +175,7 @@
             this.Name = "frmAcceuil";
             this.Text = "Acceuil";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_NbJoueur)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +194,8 @@
         private System.Windows.Forms.Button btnRetirer;
         private System.Windows.Forms.Button btnDemarer;
         private System.Windows.Forms.Button btnQuitter;
+        private System.Windows.Forms.ToolTip toolTip_NbJoueur;
+        private System.Windows.Forms.ErrorProvider errorProvider_NbJoueur;
     }
 }
 
