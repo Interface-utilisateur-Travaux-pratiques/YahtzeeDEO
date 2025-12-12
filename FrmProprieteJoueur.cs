@@ -413,5 +413,13 @@ namespace tpSynthese
                 compteurJoueurs = listeJoueurs.Count;
             }
         }
+
+
+
+
+
+
+
+
     }
 }

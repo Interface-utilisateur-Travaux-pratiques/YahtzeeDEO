@@ -42,7 +42,13 @@
             this.btnQuitter = new System.Windows.Forms.Button();
             this.toolTip_NbJoueur = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider_NbJoueur = new System.Windows.Forms.ErrorProvider(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.créerUnJoueurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.démarrerUnePartieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider_NbJoueur)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox_JoueurDispo
@@ -154,6 +160,47 @@
             // 
             this.errorProvider_NbJoueur.ContainerControl = this;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(12, 1);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(58, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.créerUnJoueurToolStripMenuItem,
+            this.démarrerUnePartieToolStripMenuItem,
+            this.quitterToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // créerUnJoueurToolStripMenuItem
+            // 
+            this.créerUnJoueurToolStripMenuItem.Name = "créerUnJoueurToolStripMenuItem";
+            this.créerUnJoueurToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.créerUnJoueurToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.créerUnJoueurToolStripMenuItem.Text = "Créer un joueur";
+            // 
+            // démarrerUnePartieToolStripMenuItem
+            // 
+            this.démarrerUnePartieToolStripMenuItem.Name = "démarrerUnePartieToolStripMenuItem";
+            this.démarrerUnePartieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.démarrerUnePartieToolStripMenuItem.Text = "Démarrer une partie";
+            // 
+            // quitterToolStripMenuItem
+            // 
+            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
+            this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.quitterToolStripMenuItem.Text = "Quitter";
+            // 
             // frmAcceuil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,13 +216,17 @@
             this.Controls.Add(this.listBox_JoueurGame);
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.listBox_JoueurDispo);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAcceuil";
             this.Text = "Acceuil";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider_NbJoueur)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,6 +247,11 @@
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.ToolTip toolTip_NbJoueur;
         private System.Windows.Forms.ErrorProvider errorProvider_NbJoueur;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem créerUnJoueurToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem démarrerUnePartieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
     }
 }
 

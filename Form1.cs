@@ -25,8 +25,12 @@ namespace tpSynthese
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            Joueur joueur1 = new Joueur("Alice", "avatar1");
+            Joueur joueur2 = new Joueur("Bob", "avatar2");
+            listeJoueursDispo.Add(joueur1);
+            listeJoueursDispo.Add(joueur2);
             listBox_JoueurDispo.DataSource = listeJoueursDispo;
+
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
