@@ -9,13 +9,17 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace tpSynthese
 {
     public partial class FrmJeu : Form
     {
         private const string TIP_BRASSER = "Vous ne pouvez plus brasser, choississez un pointage.";
+        private const int MAX_TOURS_YAHTZEE = 3;
 
+        private bool phaseYahtzeeActive = false;
+        private int toursYahtzeeJoues = 0;
         private List<Joueur> listeJoueurs;
         private Thread threadDe1, threadDe2, threadDe3, threadDe4, threadDe5;
         private volatile bool enExecutionDe1, enExecutionDe2, enExecutionDe3, enExecutionDe4, enExecutionDe5;
@@ -24,6 +28,12 @@ namespace tpSynthese
         private int lancersRestants = 3;
         Partie partie;
         private bool deSelect1, deSelect2, deSelect3, deSelect4, deSelect5;
+
+        List<Label> listeLabels;
+
+        string fichierSon = Application.StartupPath + "\\son\\brasse.wav";
+
+        SoundPlayer lecteur = new SoundPlayer();
 
 
         private void pictureBox_de4_Click(object sender, EventArgs e)
@@ -71,63 +81,97 @@ namespace tpSynthese
 
         private void lblUnJ1_Click(object sender, EventArgs e)
         {
-            TerminerTour();
+            lblUnJ1.ForeColor = Color.Black;
+            lblUnJ1.Enabled = false;
+            terminerTour();
         }
 
         private void lblUnJ2_Click(object sender, EventArgs e)
         {
-             TerminerTour();
+             lblUnJ2.ForeColor = Color.Black;
+             lblUnJ2.Enabled = false;
+             terminerTour();
         }
 
         private void lblDeuxJ1_Click(object sender, EventArgs e)
         {
-            TerminerTour();
+            lblDeuxJ1.ForeColor = Color.Black;
+            lblDeuxJ1.Enabled = false; 
+            terminerTour();
         }
 
         private void lblDeuxJ2_Click(object sender, EventArgs e)
         {
-            TerminerTour();
+            lblDeuxJ2.ForeColor = Color.Black;
+            lblDeuxJ2.Enabled = false;
+            terminerTour();
         }
 
         private void lblTroisJ1_Click(object sender, EventArgs e)
         {
-             TerminerTour();
+            lblTroisJ1.ForeColor = Color.Black;
+            lblTroisJ1.Enabled = false;
+            terminerTour();
         }
 
         private void lblTroisJ2_Click(object sender, EventArgs e)
         {
-             TerminerTour();
+            lblTroisJ2.ForeColor = Color.Black;
+            lblTroisJ2.Enabled = false;
+            terminerTour();
         }
 
         private void lblQuatreJ1_Click(object sender, EventArgs e)
         {
-             TerminerTour();
+            lblQuatreJ1.ForeColor = Color.Black;
+            lblQuatreJ1.Enabled = false;
+            terminerTour();
         }
 
         private void lblQuatreJ2_Click(object sender, EventArgs e)
         {
-            TerminerTour();
+            lblQuatreJ2.ForeColor = Color.Black;
+            lblQuatreJ2.Enabled = false;
+            terminerTour();
+
         }
 
         private void lblCinqJ1_Click(object sender, EventArgs e)
         {    
-            TerminerTour();
+            lblCinqJ1.ForeColor = Color.Black;
+            lblCinqJ1.Enabled = false;
+            terminerTour();
         }
 
         private void lblCinqJ2_Click(object sender, EventArgs e)
         {
-            TerminerTour();
+            lblCinqJ2.ForeColor = Color.Black;
+            lblCinqJ2.Enabled = false;
+            terminerTour();
         }
 
         private void lblSixJ1_Click(object sender, EventArgs e)
         {
-            TerminerTour();
+            lblSixJ1.ForeColor = Color.Black;
+            lblSixJ1.Enabled = false;
+            terminerTour();
         }
 
         private void lblSixJ2_Click(object sender, EventArgs e)
         {  
-            TerminerTour();
+            lblSixJ2.ForeColor = Color.Black;
+            lblSixJ2.Enabled = false;
+            terminerTour();
         }
+
+        private void lblYatJ1_Click(object sender, EventArgs e)
+        {
+            lblYatJ1.ForeColor = Color.Black;
+            lblYatJ1.Enabled = false;
+            terminerTour();
+        }
+
+        
 
         public FrmJeu(List<Joueur> listeJoueur)
         {
@@ -139,6 +183,9 @@ namespace tpSynthese
             aleatoireDe5 = new Random(Guid.NewGuid().GetHashCode());
             this.listeJoueurs = listeJoueur;
             this.partie = new Partie(this.listeJoueurs);
+
+            listeLabels = new List<Label> { lblUnJ1, lblDeuxJ1, lblTroisJ1, lblQuatreJ1, lblCinqJ1, lblSixJ1, lblUnJ2, lblDeuxJ2, lblTroisJ2, lblQuatreJ2, lblCinqJ2, lblSixJ2, lblYatJ1, lblYatJ2 };
+
         }
 
         private void FrmJeu_Load(object sender, EventArgs e)
@@ -166,6 +213,44 @@ namespace tpSynthese
                 pictureBox_J2.SizeMode = PictureBoxSizeMode.Zoom;
 
             }
+
+            mettreAJourAffichageTour();
+
+            foreach (Label lbl in listeLabels)
+            {
+                lbl.Visible = false;
+                lbl.Enabled = false;
+                lbl.ForeColor = Color.Pink;
+            }
+
+        }
+
+        private void lblYatJ2_Click(object sender, EventArgs e)
+        {
+            lblYatJ2.ForeColor = Color.Black;
+            lblYatJ2.Enabled = false;
+            terminerTour();
+        }
+
+        private void contextMenuStrip_Jeu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void nvPartietoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NouvellePartie();
+        }
+
+        private void RetourtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ProJoueurtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProprieteJoueur frmProprieteJoueur = new FrmProprieteJoueur(listeJoueurs);
+            frmProprieteJoueur.ShowDialog();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -173,10 +258,7 @@ namespace tpSynthese
 
         }
 
-        private void lblYatJ1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnArreter_Click(object sender, EventArgs e)
         {
@@ -186,7 +268,9 @@ namespace tpSynthese
             enExecutionDe4 = false;
             enExecutionDe5 = false;
             btnBrasser.Enabled = true;
-            AfficherScore();
+            afficherScore();
+
+            lecteur.Stop();
         }
         private void pictureBox_de1_Click(object sender, EventArgs e)
         {
@@ -251,11 +335,18 @@ namespace tpSynthese
                     threadDe5.IsBackground = true;
                     threadDe5.Start();
                 }
+
+                
+                if (File.Exists(fichierSon))
+                {
+                    lecteur.SoundLocation = fichierSon;
+                    lecteur.Play();
+                }
             }
             else
             {
                 toolTip_Tour.SetToolTip(btnBrasser, TIP_BRASSER);
-                AfficherScore();
+                afficherScore();
             }
         }
 
@@ -271,7 +362,7 @@ namespace tpSynthese
                     valeursDes[0] = nombreDuDe;
                     this.Invoke(new Action(() =>
                     {
-                        ChangerImageDe(pictureBox_de1, nombreDuDe);
+                        changerImageDe(pictureBox_de1, nombreDuDe);
                     }));
                     Thread.Sleep(100);
                 }
@@ -292,7 +383,7 @@ namespace tpSynthese
                     valeursDes[1] = nombreDuDe2;
                     this.Invoke(new Action(() =>
                     {
-                        ChangerImageDe(pictureBox_de2, nombreDuDe2);
+                        changerImageDe(pictureBox_de2, nombreDuDe2);
                     }));
                     Thread.Sleep(100);
 
@@ -307,7 +398,7 @@ namespace tpSynthese
 
 
 
-        private void ChangerImageDe(PictureBox pb, int numero)
+        private void changerImageDe(PictureBox pb, int numero)
         {
             if (File.Exists(Application.StartupPath + "\\dé\\" + numero + ".png"))
             {
@@ -330,7 +421,7 @@ namespace tpSynthese
 
                     this.Invoke(new Action(() =>
                     {
-                        ChangerImageDe(pictureBox_de3, nombreDuDe3);
+                        changerImageDe(pictureBox_de3, nombreDuDe3);
                     }));
                     Thread.Sleep(100);
                 }
@@ -353,7 +444,7 @@ namespace tpSynthese
 
                     this.Invoke(new Action(() =>
                     {
-                        ChangerImageDe(pictureBox_de4, nombreDuDe4);
+                        changerImageDe(pictureBox_de4, nombreDuDe4);
                     }));
                     Thread.Sleep(100);
                 }
@@ -376,7 +467,7 @@ namespace tpSynthese
 
                     this.Invoke(new Action(() =>
                     {
-                        ChangerImageDe(pictureBox_de5, nombreDuDe5);
+                        changerImageDe(pictureBox_de5, nombreDuDe5);
                     }));
                     Thread.Sleep(100);
                 }
@@ -389,8 +480,27 @@ namespace tpSynthese
         }
     
 
-        private void TerminerTour()
+        private void terminerTour()
         {
+            foreach (Label lbl in listeLabels)
+            {
+                if (lbl.ForeColor == Color.Green)
+                {
+                    lbl.Text = "";
+                    lbl.Visible = false;
+                    lbl.ForeColor = Color.Pink; // Remise à l'état par défaut
+                }
+            }
+            if (lblYatJ1.ForeColor != Color.Black) { lblYatJ1.Text = ""; lblYatJ1.Visible = false; }
+            if (lblYatJ2.ForeColor != Color.Black) { lblYatJ2.Text = ""; lblYatJ2.Visible = false; }
+
+
+            if (sontCategoriesPrincipalesTerminees())
+            {
+                calculerEtAfficherGagnant();
+            }
+
+
             deSelect1 = deSelect2 = deSelect3 = deSelect4 = deSelect5 = false;
             pictureBox_de1.BorderStyle = BorderStyle.None;
             pictureBox_de2.BorderStyle = BorderStyle.None;
@@ -404,11 +514,10 @@ namespace tpSynthese
             btnArreter.Enabled = false;
 
             partie.ChangerTour();
-
-            MettreAJourAffichageTour();
+            mettreAJourAffichageTour();
         }
 
-        private void MettreAJourAffichageTour()
+        private void mettreAJourAffichageTour()
         {
             if (partie.ListeJoueurs.IndexOf(partie.JoueurCourant) == 0)
             {
@@ -423,137 +532,187 @@ namespace tpSynthese
             } 
         }
 
-        private void AfficherScore()
+        private void afficherScore()
         {
+            int[] somme = new int[7];
+
+            foreach (int valeur in valeursDes)
+            {
+                somme[valeur] += valeur;
+            }
+
+            Label lblUn, lblDeux, lblTrois, lblQuatre, lblCinq, lblSix;
+
             if (partie.JoueurCourant == listeJoueurs[0])
             {
-                int somme1 = 0;
-                int somme2 = 0;
-                int somme3 = 0;
-                int somme4 = 0;
-                int somme5 = 0;
-                int somme6 = 0;
-
-                foreach (int valeur in valeursDes)
-                {
-                    if (valeur == 1)
-                    {
-                        somme1 += 1;
-                    }
-
-                    if (valeur == 2)
-                    {
-                        somme2 += 2;
-                    }
-                    if (valeur == 3)
-                    {
-                        somme3 += 3;
-                    }
-                    if (valeur == 4)
-                    {
-                        somme4 += 4;
-                    }
-                    if (valeur == 5)
-                    {
-                        somme5 += 5;
-                    }
-                    if (valeur == 6)
-                    {
-                        somme6 += 6;
-                    }
-                }
-                if (somme1 != 0)
-                {
-                    lblUnJ1.Text = somme1.ToString();
-                    lblUnJ1.ForeColor = Color.Green;
-                }
-                if (somme2 != 0)
-                {
-                    lblDeuxJ1.Text = somme2.ToString();
-                    lblDeuxJ1.ForeColor = Color.Green;
-                }
-                if (somme3 != 0)
-                {
-                    lblTroisJ1.Text = somme3.ToString();
-                    lblTroisJ1.ForeColor = Color.Green;
-                }
-                if (somme4 != 0)
-                {
-                    lblQuatreJ1.Text = somme4.ToString();
-                    lblQuatreJ1.ForeColor = Color.Green;
-                }
-                if (somme5 != 0)
-                {
-                    lblCinqJ1.Text = somme5.ToString();
-                    lblCinqJ1.ForeColor = Color.Green;
-                }
+                lblUn = lblUnJ1; lblDeux = lblDeuxJ1; lblTrois = lblTroisJ1;
+                lblQuatre = lblQuatreJ1; lblCinq = lblCinqJ1; lblSix = lblSixJ1;
+                lblYat = lblYatJ1;
             }
             else
             {
-                int somme1 = 0;
-                int somme2 = 0;
-                int somme3 = 0;
-                int somme4 = 0;
-                int somme5 = 0;
-                int somme6 = 0;
-                foreach (int valeur in valeursDes)
+                lblUn = lblUnJ2; lblDeux = lblDeuxJ2; lblTrois = lblTroisJ2;
+                lblQuatre = lblQuatreJ2; lblCinq = lblCinqJ2; lblSix = lblSixJ2;
+                lblYat = lblYatJ2;
+            }
+
+            int pointsYahtzee = partie.CalculerYahtzee(valeursDes);
+
+            affichageAjour(lblUn, somme[1]);
+            affichageAjour(lblDeux, somme[2]);
+            affichageAjour(lblTrois, somme[3]);
+            affichageAjour(lblQuatre, somme[4]);
+            affichageAjour(lblCinq, somme[5]);
+            affichageAjour(lblSix, somme[6]);
+
+            if (pointsYahtzee > 0)
+            {
+                affichageAjour(lblYat, pointsYahtzee);
+            }
+            else
+            {
+                if (lblYat.ForeColor != Color.Black) 
                 {
-                    if (valeur == 1)
-                    {
-                        somme1 += 1;
-                    }
-                    if (valeur == 2)
-                    {
-                        somme2 += 2;
-                    }
-                    if (valeur == 3)
-                    {
-                        somme3 += 3;
-                    }
-                    if (valeur == 4)
-                    {
-                        somme4 += 4;
-                    }
-                    if (valeur == 5)
-                    {
-                        somme5 += 5;
-                    }
-                    if (valeur == 6)
-                    {
-                        somme6 += 6;
-                    }
+                    lblYat.Text = "0";
+                    lblYat.ForeColor = Color.Green;
+                    lblYat.Visible = true;
+                    lblYat.Enabled = true;
                 }
-                if (somme1 != 0)
+            }
+        }
+
+        private void affichageAjour(Label lbl, int score)
+        {
+            if (lbl.ForeColor != Color.Black)
+            {
+                if (score > 0)
                 {
-                    lblUnJ2.Text = somme1.ToString();
-                    lblUnJ2.ForeColor = Color.Green;
+                    lbl.ForeColor = Color.Green;
+                    lbl.Text = score.ToString();
+                    lbl.Visible = true;
+                    lbl.Enabled = true;
                 }
-                if (somme2 != 0)
+                else
                 {
-                    lblDeuxJ2.Text = somme2.ToString();
-                    lblDeuxJ2.ForeColor = Color.Green;
+                    lbl.Visible = false;
+                    lbl.Enabled = false;
+                    lbl.Text = "";
                 }
-                if (somme3 != 0)
+            }
+            
+        }
+
+        private bool sontCategoriesPrincipalesTerminees()
+        {
+            bool j1Fini = lblUnJ1.ForeColor == Color.Black &&
+                          lblDeuxJ1.ForeColor == Color.Black &&
+                          lblTroisJ1.ForeColor == Color.Black &&
+                          lblQuatreJ1.ForeColor == Color.Black &&
+                          lblCinqJ1.ForeColor == Color.Black &&
+                          lblSixJ1.ForeColor == Color.Black &&
+                          lblYatJ1.ForeColor ==Color.Black;
+
+            bool j2Fini = lblUnJ2.ForeColor == Color.Black &&
+                          lblDeuxJ2.ForeColor == Color.Black &&
+                          lblTroisJ2.ForeColor == Color.Black &&
+                          lblQuatreJ2.ForeColor == Color.Black &&
+                          lblCinqJ2.ForeColor == Color.Black &&
+                          lblSixJ2.ForeColor == Color.Black &&
+                          lblYatJ2.ForeColor == Color.Black;
+
+            return j1Fini && j2Fini;
+        }
+
+        private void calculerEtAfficherGagnant()
+        {
+            int scoreJ1 = 0;
+            int scoreJ2 = 0;
+            foreach (Label lbl in listeLabels)
+            {
+                if (lbl.ForeColor == Color.Black)
                 {
-                    lblTroisJ2.Text = somme3.ToString();
-                    lblTroisJ2.ForeColor = Color.Green;
-                }
-                if (somme4 != 0)
-                {
-                    lblQuatreJ2.Text = somme4.ToString();
-                    lblQuatreJ2.ForeColor = Color.Green;
-                }
-                if (somme5 != 0)
-                {
-                    lblCinqJ2.Text = somme5.ToString();
-                    lblCinqJ2.ForeColor = Color.Green;
+                    if (lbl.Name.EndsWith("J1"))
+                    {
+                        scoreJ1 += int.Parse(lbl.Text);
+                    }
+                    else if (lbl.Name.EndsWith("J2"))
+                    {
+                        scoreJ2 += int.Parse(lbl.Text);
+                    }
                 }
             }
 
+            lblTotalJ1.Text = scoreJ1.ToString();
+            lblTotalJ2.Text = scoreJ2.ToString();
+
+            listeJoueurs[0].ScorePartie = scoreJ1;              
+            listeJoueurs[0].ScoreTotalParties += scoreJ1;        
+            listeJoueurs[0].TotalPartiesJouees++;                
+
+            listeJoueurs[1].ScorePartie = scoreJ2;               
+            listeJoueurs[1].ScoreTotalParties += scoreJ2;        
+            listeJoueurs[1].TotalPartiesJouees++;                
+
+            if (scoreJ1 > scoreJ2)
+            {
+                lblGagnant.Text = listeJoueurs[0].Nom + " a GAGNE !!" ;
+            } 
+            else if (scoreJ2 > scoreJ1)
+            {
+                lblGagnant.Text = listeJoueurs[1].Nom + " a GAGNE !!";
+            }
+            else
+            {
+                lblGagnant.Text = " WOWW egalite !!!";
+            }
+
+            foreach (var ctrl in this.Controls)
+            {
+                if (ctrl is Button btn)
+                {
+                    btn.Enabled = false;
+                }
+            }
+
+            btnBrasser.Enabled = false;
 
         }
 
+        private void NouvellePartie()
+        {
+            this.partie = new Partie(this.listeJoueurs); 
+            this.lancersRestants = 3;
+            Array.Clear(valeursDes, 0, valeursDes.Length); 
+
+            deSelect1 = deSelect2 = deSelect3 = deSelect4 = deSelect5 = false;
+
+            pictureBox_de1.BorderStyle = BorderStyle.None;
+            pictureBox_de2.BorderStyle = BorderStyle.None;
+            pictureBox_de3.BorderStyle = BorderStyle.None;
+            pictureBox_de4.BorderStyle = BorderStyle.None;
+            pictureBox_de5.BorderStyle = BorderStyle.None;
+
+            foreach (Label lbl in listeLabels)
+            {
+                lbl.Text = "";          
+                lbl.ForeColor = Color.Pink; 
+                lbl.Visible = false;     
+                lbl.Enabled = false;     
+            }
+
+            lblGagnant.Text = "";
+
+            btnBrasser.Enabled = true;
+            btnArreter.Enabled = false;
+            btnDeselec.Enabled = false;
+            toolTip_Tour.SetToolTip(btnBrasser, null);
+
+            mettreAJourAffichageTour();
+        }
+
+
 
     }
+
     
 }

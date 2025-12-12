@@ -163,7 +163,7 @@
             this.tableLayoutPanel_Avatars.ColumnCount = 3;
             this.tableLayoutPanel_Avatars.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.23656F));
             this.tableLayoutPanel_Avatars.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.76344F));
-            this.tableLayoutPanel_Avatars.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tableLayoutPanel_Avatars.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
             this.tableLayoutPanel_Avatars.Controls.Add(this.pictureBox_avatar1, 0, 0);
             this.tableLayoutPanel_Avatars.Controls.Add(this.pictureBox_avatar4, 0, 1);
             this.tableLayoutPanel_Avatars.Controls.Add(this.pictureBox_avatar6, 2, 1);
@@ -184,7 +184,7 @@
             this.pictureBox_avatar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox_avatar1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox_avatar1.Name = "pictureBox_avatar1";
-            this.pictureBox_avatar1.Size = new System.Drawing.Size(172, 122);
+            this.pictureBox_avatar1.Size = new System.Drawing.Size(171, 122);
             this.pictureBox_avatar1.TabIndex = 0;
             this.pictureBox_avatar1.TabStop = false;
             this.pictureBox_avatar1.Click += new System.EventHandler(this.pictureBox_avatar1_Click);
@@ -195,7 +195,7 @@
             this.pictureBox_avatar4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox_avatar4.Location = new System.Drawing.Point(3, 131);
             this.pictureBox_avatar4.Name = "pictureBox_avatar4";
-            this.pictureBox_avatar4.Size = new System.Drawing.Size(172, 122);
+            this.pictureBox_avatar4.Size = new System.Drawing.Size(171, 122);
             this.pictureBox_avatar4.TabIndex = 1;
             this.pictureBox_avatar4.TabStop = false;
             this.pictureBox_avatar4.Click += new System.EventHandler(this.pictureBox_avatar4_Click);
@@ -204,7 +204,7 @@
             // 
             this.pictureBox_avatar6.BackgroundImage = global::tpSynthese.Properties.Resources.avatar6;
             this.pictureBox_avatar6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox_avatar6.Location = new System.Drawing.Point(387, 131);
+            this.pictureBox_avatar6.Location = new System.Drawing.Point(386, 131);
             this.pictureBox_avatar6.Name = "pictureBox_avatar6";
             this.pictureBox_avatar6.Size = new System.Drawing.Size(176, 122);
             this.pictureBox_avatar6.TabIndex = 3;
@@ -216,7 +216,7 @@
             this.pictureBox_avatar3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_avatar3.BackgroundImage = global::tpSynthese.Properties.Resources.avatar3;
             this.pictureBox_avatar3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox_avatar3.Location = new System.Drawing.Point(387, 3);
+            this.pictureBox_avatar3.Location = new System.Drawing.Point(386, 3);
             this.pictureBox_avatar3.Name = "pictureBox_avatar3";
             this.pictureBox_avatar3.Size = new System.Drawing.Size(176, 122);
             this.pictureBox_avatar3.TabIndex = 5;
@@ -227,7 +227,7 @@
             // 
             this.pictureBox_avatar5.BackgroundImage = global::tpSynthese.Properties.Resources.avatar5;
             this.pictureBox_avatar5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox_avatar5.Location = new System.Drawing.Point(181, 131);
+            this.pictureBox_avatar5.Location = new System.Drawing.Point(180, 131);
             this.pictureBox_avatar5.Name = "pictureBox_avatar5";
             this.pictureBox_avatar5.Size = new System.Drawing.Size(176, 122);
             this.pictureBox_avatar5.TabIndex = 4;
@@ -238,7 +238,7 @@
             // 
             this.pictureBox_avatar2.BackgroundImage = global::tpSynthese.Properties.Resources.avatar2;
             this.pictureBox_avatar2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox_avatar2.Location = new System.Drawing.Point(181, 3);
+            this.pictureBox_avatar2.Location = new System.Drawing.Point(180, 3);
             this.pictureBox_avatar2.Name = "pictureBox_avatar2";
             this.pictureBox_avatar2.Size = new System.Drawing.Size(176, 122);
             this.pictureBox_avatar2.TabIndex = 2;
@@ -293,6 +293,10 @@
             this.retourÀLaccueilToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
             this.retourÀLaccueilToolStripMenuItem.Text = "Retour à l\'accueil";
             this.retourÀLaccueilToolStripMenuItem.Click += new System.EventHandler(this.retourÀLaccueilToolStripMenuItem_Click);
+            // 
+            // printDocumentImp
+            // 
+            this.printDocumentImp.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentImp_PrintPage);
             // 
             // printDialogImp
             // 

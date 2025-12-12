@@ -60,11 +60,6 @@
             this.lblJ2 = new System.Windows.Forms.Label();
             this.btnBrasser = new System.Windows.Forms.Button();
             this.btnDeselec = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nouvellePartieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.propriétésDesJoueursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.retourÀLaccueilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTourJ1 = new System.Windows.Forms.Label();
             this.lblTourJ2 = new System.Windows.Forms.Label();
             this.pictureBox_J1 = new System.Windows.Forms.PictureBox();
@@ -76,8 +71,13 @@
             this.pictureBox_de1 = new System.Windows.Forms.PictureBox();
             this.btnArreter = new System.Windows.Forms.Button();
             this.toolTip_Tour = new System.Windows.Forms.ToolTip(this.components);
+            this.contextMenuStrip_Jeu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nvPartietoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProJoueurtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RetourtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTitre = new System.Windows.Forms.Label();
+            this.lblGagnant = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_J1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_J2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de5)).BeginInit();
@@ -85,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de1)).BeginInit();
+            this.contextMenuStrip_Jeu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -96,7 +97,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.6798F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.3202F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.Controls.Add(this.lblCinq, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblNom2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblUn, 0, 1);
@@ -145,7 +146,7 @@
             this.lblCinq.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCinq.AutoSize = true;
             this.lblCinq.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCinq.Location = new System.Drawing.Point(36, 257);
+            this.lblCinq.Location = new System.Drawing.Point(31, 257);
             this.lblCinq.Name = "lblCinq";
             this.lblCinq.Size = new System.Drawing.Size(49, 24);
             this.lblCinq.TabIndex = 14;
@@ -156,7 +157,7 @@
             this.lblNom2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNom2.AutoSize = true;
             this.lblNom2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNom2.Location = new System.Drawing.Point(241, 11);
+            this.lblNom2.Location = new System.Drawing.Point(232, 11);
             this.lblNom2.Name = "lblNom2";
             this.lblNom2.Size = new System.Drawing.Size(60, 24);
             this.lblNom2.TabIndex = 1;
@@ -167,7 +168,7 @@
             this.lblUn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUn.AutoSize = true;
             this.lblUn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUn.Location = new System.Drawing.Point(39, 54);
+            this.lblUn.Location = new System.Drawing.Point(34, 54);
             this.lblUn.Name = "lblUn";
             this.lblUn.Size = new System.Drawing.Size(43, 24);
             this.lblUn.TabIndex = 2;
@@ -178,7 +179,7 @@
             this.lblUnJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUnJ2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblUnJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnJ2.Location = new System.Drawing.Point(249, 46);
+            this.lblUnJ2.Location = new System.Drawing.Point(240, 46);
             this.lblUnJ2.Name = "lblUnJ2";
             this.lblUnJ2.Size = new System.Drawing.Size(44, 41);
             this.lblUnJ2.TabIndex = 4;
@@ -191,7 +192,7 @@
             this.lblDeux.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDeux.AutoSize = true;
             this.lblDeux.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeux.Location = new System.Drawing.Point(33, 103);
+            this.lblDeux.Location = new System.Drawing.Point(28, 103);
             this.lblDeux.Name = "lblDeux";
             this.lblDeux.Size = new System.Drawing.Size(55, 24);
             this.lblDeux.TabIndex = 5;
@@ -202,7 +203,7 @@
             this.lblDeuxJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDeuxJ1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDeuxJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeuxJ1.Location = new System.Drawing.Point(147, 89);
+            this.lblDeuxJ1.Location = new System.Drawing.Point(133, 89);
             this.lblDeuxJ1.Name = "lblDeuxJ1";
             this.lblDeuxJ1.Size = new System.Drawing.Size(44, 52);
             this.lblDeuxJ1.TabIndex = 6;
@@ -215,7 +216,7 @@
             this.lblDeuxJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDeuxJ2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDeuxJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeuxJ2.Location = new System.Drawing.Point(249, 89);
+            this.lblDeuxJ2.Location = new System.Drawing.Point(240, 89);
             this.lblDeuxJ2.Name = "lblDeuxJ2";
             this.lblDeuxJ2.Size = new System.Drawing.Size(44, 52);
             this.lblDeuxJ2.TabIndex = 7;
@@ -228,7 +229,7 @@
             this.lblTrois.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTrois.AutoSize = true;
             this.lblTrois.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrois.Location = new System.Drawing.Point(34, 153);
+            this.lblTrois.Location = new System.Drawing.Point(29, 153);
             this.lblTrois.Name = "lblTrois";
             this.lblTrois.Size = new System.Drawing.Size(52, 24);
             this.lblTrois.TabIndex = 8;
@@ -239,7 +240,7 @@
             this.lblTroisJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTroisJ1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTroisJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroisJ1.Location = new System.Drawing.Point(147, 143);
+            this.lblTroisJ1.Location = new System.Drawing.Point(133, 143);
             this.lblTroisJ1.Name = "lblTroisJ1";
             this.lblTroisJ1.Size = new System.Drawing.Size(44, 45);
             this.lblTroisJ1.TabIndex = 9;
@@ -252,7 +253,7 @@
             this.lblTroisJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTroisJ2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTroisJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroisJ2.Location = new System.Drawing.Point(249, 143);
+            this.lblTroisJ2.Location = new System.Drawing.Point(240, 143);
             this.lblTroisJ2.Name = "lblTroisJ2";
             this.lblTroisJ2.Size = new System.Drawing.Size(44, 45);
             this.lblTroisJ2.TabIndex = 10;
@@ -265,7 +266,7 @@
             this.lblQuatre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblQuatre.AutoSize = true;
             this.lblQuatre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuatre.Location = new System.Drawing.Point(27, 204);
+            this.lblQuatre.Location = new System.Drawing.Point(22, 204);
             this.lblQuatre.Name = "lblQuatre";
             this.lblQuatre.Size = new System.Drawing.Size(67, 24);
             this.lblQuatre.TabIndex = 11;
@@ -276,7 +277,7 @@
             this.lblQuatreJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblQuatreJ1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblQuatreJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuatreJ1.Location = new System.Drawing.Point(147, 190);
+            this.lblQuatreJ1.Location = new System.Drawing.Point(133, 190);
             this.lblQuatreJ1.Name = "lblQuatreJ1";
             this.lblQuatreJ1.Size = new System.Drawing.Size(44, 52);
             this.lblQuatreJ1.TabIndex = 12;
@@ -289,7 +290,7 @@
             this.lblQuatreJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblQuatreJ2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblQuatreJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuatreJ2.Location = new System.Drawing.Point(249, 190);
+            this.lblQuatreJ2.Location = new System.Drawing.Point(240, 190);
             this.lblQuatreJ2.Name = "lblQuatreJ2";
             this.lblQuatreJ2.Size = new System.Drawing.Size(44, 52);
             this.lblQuatreJ2.TabIndex = 13;
@@ -302,7 +303,7 @@
             this.lblCinqJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCinqJ1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCinqJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCinqJ1.Location = new System.Drawing.Point(147, 244);
+            this.lblCinqJ1.Location = new System.Drawing.Point(133, 244);
             this.lblCinqJ1.Name = "lblCinqJ1";
             this.lblCinqJ1.Size = new System.Drawing.Size(44, 51);
             this.lblCinqJ1.TabIndex = 15;
@@ -315,7 +316,7 @@
             this.lblCinqJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCinqJ2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCinqJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCinqJ2.Location = new System.Drawing.Point(249, 244);
+            this.lblCinqJ2.Location = new System.Drawing.Point(240, 244);
             this.lblCinqJ2.Name = "lblCinqJ2";
             this.lblCinqJ2.Size = new System.Drawing.Size(44, 51);
             this.lblCinqJ2.TabIndex = 16;
@@ -328,7 +329,7 @@
             this.lblUnJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUnJ1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblUnJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnJ1.Location = new System.Drawing.Point(147, 46);
+            this.lblUnJ1.Location = new System.Drawing.Point(133, 46);
             this.lblUnJ1.Name = "lblUnJ1";
             this.lblUnJ1.Size = new System.Drawing.Size(44, 41);
             this.lblUnJ1.TabIndex = 3;
@@ -341,7 +342,7 @@
             this.lblNom1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNom1.AutoSize = true;
             this.lblNom1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNom1.Location = new System.Drawing.Point(139, 11);
+            this.lblNom1.Location = new System.Drawing.Point(125, 11);
             this.lblNom1.Name = "lblNom1";
             this.lblNom1.Size = new System.Drawing.Size(60, 24);
             this.lblNom1.TabIndex = 0;
@@ -352,7 +353,7 @@
             this.lblSixJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSixJ1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSixJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSixJ1.Location = new System.Drawing.Point(147, 297);
+            this.lblSixJ1.Location = new System.Drawing.Point(133, 297);
             this.lblSixJ1.Name = "lblSixJ1";
             this.lblSixJ1.Size = new System.Drawing.Size(44, 50);
             this.lblSixJ1.TabIndex = 17;
@@ -365,7 +366,7 @@
             this.lblSixJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSixJ2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSixJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSixJ2.Location = new System.Drawing.Point(249, 297);
+            this.lblSixJ2.Location = new System.Drawing.Point(240, 297);
             this.lblSixJ2.Name = "lblSixJ2";
             this.lblSixJ2.Size = new System.Drawing.Size(44, 50);
             this.lblSixJ2.TabIndex = 18;
@@ -378,7 +379,7 @@
             this.lblSix.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSix.AutoSize = true;
             this.lblSix.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSix.Location = new System.Drawing.Point(42, 310);
+            this.lblSix.Location = new System.Drawing.Point(37, 310);
             this.lblSix.Name = "lblSix";
             this.lblSix.Size = new System.Drawing.Size(36, 24);
             this.lblSix.TabIndex = 19;
@@ -389,7 +390,7 @@
             this.lblYat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYat.AutoSize = true;
             this.lblYat.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYat.Location = new System.Drawing.Point(11, 365);
+            this.lblYat.Location = new System.Drawing.Point(6, 365);
             this.lblYat.Name = "lblYat";
             this.lblYat.Size = new System.Drawing.Size(99, 24);
             this.lblYat.TabIndex = 20;
@@ -399,10 +400,11 @@
             // 
             this.lblYatJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYatJ1.AutoSize = true;
-            this.lblYatJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYatJ1.Location = new System.Drawing.Point(169, 365);
+            this.lblYatJ1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblYatJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYatJ1.Location = new System.Drawing.Point(155, 362);
             this.lblYatJ1.Name = "lblYatJ1";
-            this.lblYatJ1.Size = new System.Drawing.Size(0, 24);
+            this.lblYatJ1.Size = new System.Drawing.Size(0, 29);
             this.lblYatJ1.TabIndex = 21;
             this.lblYatJ1.Click += new System.EventHandler(this.lblYatJ1_Click);
             // 
@@ -410,18 +412,20 @@
             // 
             this.lblYatJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYatJ2.AutoSize = true;
-            this.lblYatJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYatJ2.Location = new System.Drawing.Point(271, 365);
+            this.lblYatJ2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblYatJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYatJ2.Location = new System.Drawing.Point(262, 362);
             this.lblYatJ2.Name = "lblYatJ2";
-            this.lblYatJ2.Size = new System.Drawing.Size(0, 24);
+            this.lblYatJ2.Size = new System.Drawing.Size(0, 29);
             this.lblYatJ2.TabIndex = 22;
+            this.lblYatJ2.Click += new System.EventHandler(this.lblYatJ2_Click);
             // 
             // lblTotal
             // 
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(24, 415);
+            this.lblTotal.Location = new System.Drawing.Point(19, 415);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(72, 24);
             this.lblTotal.TabIndex = 23;
@@ -431,23 +435,21 @@
             // 
             this.lblTotalJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotalJ1.AutoSize = true;
-            this.lblTotalJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalJ1.Location = new System.Drawing.Point(159, 415);
+            this.lblTotalJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalJ1.Location = new System.Drawing.Point(155, 411);
             this.lblTotalJ1.Name = "lblTotalJ1";
-            this.lblTotalJ1.Size = new System.Drawing.Size(20, 24);
+            this.lblTotalJ1.Size = new System.Drawing.Size(0, 31);
             this.lblTotalJ1.TabIndex = 24;
-            this.lblTotalJ1.Text = "0";
             // 
             // lblTotalJ2
             // 
             this.lblTotalJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotalJ2.AutoSize = true;
-            this.lblTotalJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalJ2.Location = new System.Drawing.Point(261, 415);
+            this.lblTotalJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalJ2.Location = new System.Drawing.Point(262, 411);
             this.lblTotalJ2.Name = "lblTotalJ2";
-            this.lblTotalJ2.Size = new System.Drawing.Size(20, 24);
+            this.lblTotalJ2.Size = new System.Drawing.Size(0, 31);
             this.lblTotalJ2.TabIndex = 25;
-            this.lblTotalJ2.Text = "0";
             // 
             // lblJ1
             // 
@@ -496,54 +498,14 @@
             this.btnDeselec.UseVisualStyleBackColor = true;
             this.btnDeselec.Click += new System.EventHandler(this.btnDeselec_Click);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(1, -1);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(58, 24);
-            this.menuStrip1.TabIndex = 30;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuToolStripMenuItem
-            // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nouvellePartieToolStripMenuItem,
-            this.propriétésDesJoueursToolStripMenuItem,
-            this.retourÀLaccueilToolStripMenuItem});
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem.Text = "Menu";
-            // 
-            // nouvellePartieToolStripMenuItem
-            // 
-            this.nouvellePartieToolStripMenuItem.Name = "nouvellePartieToolStripMenuItem";
-            this.nouvellePartieToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.nouvellePartieToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.nouvellePartieToolStripMenuItem.Text = "Nouvelle partie";
-            // 
-            // propriétésDesJoueursToolStripMenuItem
-            // 
-            this.propriétésDesJoueursToolStripMenuItem.Name = "propriétésDesJoueursToolStripMenuItem";
-            this.propriétésDesJoueursToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.propriétésDesJoueursToolStripMenuItem.Text = "Propriétés des joueurs";
-            // 
-            // retourÀLaccueilToolStripMenuItem
-            // 
-            this.retourÀLaccueilToolStripMenuItem.Name = "retourÀLaccueilToolStripMenuItem";
-            this.retourÀLaccueilToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.retourÀLaccueilToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.retourÀLaccueilToolStripMenuItem.Text = "Retour à l’accueil ";
-            // 
             // lblTourJ1
             // 
             this.lblTourJ1.AutoSize = true;
-            this.lblTourJ1.Location = new System.Drawing.Point(221, 175);
+            this.lblTourJ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTourJ1.ForeColor = System.Drawing.Color.Red;
+            this.lblTourJ1.Location = new System.Drawing.Point(204, 172);
             this.lblTourJ1.Name = "lblTourJ1";
-            this.lblTourJ1.Size = new System.Drawing.Size(78, 13);
+            this.lblTourJ1.Size = new System.Drawing.Size(109, 18);
             this.lblTourJ1.TabIndex = 31;
             this.lblTourJ1.Text = "C\'est votre tour";
             this.lblTourJ1.Visible = false;
@@ -551,11 +513,14 @@
             // lblTourJ2
             // 
             this.lblTourJ2.AutoSize = true;
-            this.lblTourJ2.Location = new System.Drawing.Point(221, 556);
+            this.lblTourJ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTourJ2.ForeColor = System.Drawing.Color.Red;
+            this.lblTourJ2.Location = new System.Drawing.Point(204, 553);
             this.lblTourJ2.Name = "lblTourJ2";
-            this.lblTourJ2.Size = new System.Drawing.Size(78, 13);
+            this.lblTourJ2.Size = new System.Drawing.Size(109, 18);
             this.lblTourJ2.TabIndex = 32;
             this.lblTourJ2.Text = "C\'est votre tour";
+            this.lblTourJ2.Visible = false;
             // 
             // pictureBox_J1
             // 
@@ -632,11 +597,67 @@
             this.btnArreter.UseVisualStyleBackColor = true;
             this.btnArreter.Click += new System.EventHandler(this.btnArreter_Click);
             // 
+            // contextMenuStrip_Jeu
+            // 
+            this.contextMenuStrip_Jeu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nvPartietoolStripMenuItem1,
+            this.ProJoueurtoolStripMenuItem,
+            this.RetourtoolStripMenuItem});
+            this.contextMenuStrip_Jeu.Name = "contextMenuStrip_Jeu";
+            this.contextMenuStrip_Jeu.Size = new System.Drawing.Size(209, 70);
+            this.contextMenuStrip_Jeu.Text = "Nouvelle Partie";
+            this.contextMenuStrip_Jeu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Jeu_Opening);
+            // 
+            // nvPartietoolStripMenuItem1
+            // 
+            this.nvPartietoolStripMenuItem1.Name = "nvPartietoolStripMenuItem1";
+            this.nvPartietoolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.nvPartietoolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.nvPartietoolStripMenuItem1.Text = "Nouvelle Partie";
+            this.nvPartietoolStripMenuItem1.Click += new System.EventHandler(this.nvPartietoolStripMenuItem1_Click);
+            // 
+            // ProJoueurtoolStripMenuItem
+            // 
+            this.ProJoueurtoolStripMenuItem.Name = "ProJoueurtoolStripMenuItem";
+            this.ProJoueurtoolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.ProJoueurtoolStripMenuItem.Text = "Propriétés des joueurs";
+            this.ProJoueurtoolStripMenuItem.Click += new System.EventHandler(this.ProJoueurtoolStripMenuItem_Click);
+            // 
+            // RetourtoolStripMenuItem
+            // 
+            this.RetourtoolStripMenuItem.Name = "RetourtoolStripMenuItem";
+            this.RetourtoolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.RetourtoolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.RetourtoolStripMenuItem.Text = "Retour à l’accueil ";
+            this.RetourtoolStripMenuItem.Click += new System.EventHandler(this.RetourtoolStripMenuItem_Click);
+            // 
+            // lblTitre
+            // 
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Dice", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(550, 533);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(546, 46);
+            this.lblTitre.TabIndex = 34;
+            this.lblTitre.Text = "Yatzee par daN";
+            // 
+            // lblGagnant
+            // 
+            this.lblGagnant.AutoSize = true;
+            this.lblGagnant.Font = new System.Drawing.Font("Dice", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGagnant.Location = new System.Drawing.Point(462, 648);
+            this.lblGagnant.Name = "lblGagnant";
+            this.lblGagnant.Size = new System.Drawing.Size(0, 46);
+            this.lblGagnant.TabIndex = 35;
+            // 
             // FrmJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1151, 764);
+            this.ContextMenuStrip = this.contextMenuStrip_Jeu;
+            this.Controls.Add(this.lblGagnant);
+            this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.btnArreter);
             this.Controls.Add(this.lblTourJ2);
             this.Controls.Add(this.lblTourJ1);
@@ -652,19 +673,15 @@
             this.Controls.Add(this.pictureBox_de3);
             this.Controls.Add(this.pictureBox_de2);
             this.Controls.Add(this.pictureBox_de1);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmJeu";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "FrmJeu";
+            this.Text = "Yathzee par DAN";
             this.Load += new System.EventHandler(this.FrmJeu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_J1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_J2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de5)).EndInit();
@@ -672,6 +689,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_de1)).EndInit();
+            this.contextMenuStrip_Jeu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -717,14 +735,15 @@
         private System.Windows.Forms.Label lblJ2;
         private System.Windows.Forms.Button btnBrasser;
         private System.Windows.Forms.Button btnDeselec;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nouvellePartieToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem propriétésDesJoueursToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem retourÀLaccueilToolStripMenuItem;
         private System.Windows.Forms.Label lblTourJ1;
         private System.Windows.Forms.Label lblTourJ2;
         private System.Windows.Forms.Button btnArreter;
         private System.Windows.Forms.ToolTip toolTip_Tour;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Jeu;
+        private System.Windows.Forms.ToolStripMenuItem nvPartietoolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ProJoueurtoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RetourtoolStripMenuItem;
+        private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.Label lblGagnant;
     }
 }

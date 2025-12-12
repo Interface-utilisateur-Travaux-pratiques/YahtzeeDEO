@@ -19,7 +19,6 @@ namespace tpSynthese
     {
         // impression
         string chemin = Application.StartupPath + "\\";
-        string fichierJoueur = "DonneesJoueur.pdf";
         string portionDocImpression;
         string contenuDocumentEntier;
         Font policeImpression;
@@ -347,25 +346,51 @@ namespace tpSynthese
 
         private void eToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string nomFichier = Application.StartupPath + @"/fichierJoueur/proprieteJoueur.json";
-            object liste = listeJoueurs;
-
-            try
+            if (listBox_Joueur.SelectedIndex != -1)
             {
-                var options = new JsonSerializerOptions
+                Joueur liste = (Joueur)listBox_Joueur.SelectedItem;
+                string nomFichier = Application.StartupPath + @"/fichierJoueur/propriete"+liste.Nom+".json";
+
+                try
                 {
-                    WriteIndented = true,
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-                };
+                    var options = new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                    };
 
-                var jsonString = JsonSerializer.Serialize(liste, options);
-                File.WriteAllText(nomFichier, jsonString, System.Text.Encoding.UTF8);
+                    var jsonString = JsonSerializer.Serialize(liste, options);
+                    File.WriteAllText(nomFichier, jsonString, System.Text.Encoding.UTF8);
 
-                MessageBox.Show("Fichier JSON écrit avec succès : " + nomFichier);
+                    MessageBox.Show("Fichier JSON écrit avec succès : " + nomFichier);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'écriture du fichier JSON : " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur lors de l'écriture du fichier JSON : " + ex.Message);
+            else 
+            { 
+                string nomFichier = Application.StartupPath + @"/fichierJoueur/proprieteJoueurs.json";
+                object liste = listeJoueurs;
+
+                try
+                {
+                    var options = new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                    };
+
+                    var jsonString = JsonSerializer.Serialize(liste, options);
+                    File.WriteAllText(nomFichier, jsonString, System.Text.Encoding.UTF8);
+
+                    MessageBox.Show("Fichier JSON écrit avec succès : " + nomFichier);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'écriture du fichier JSON : " + ex.Message);
+                }
             }
         }
 
@@ -380,21 +405,41 @@ namespace tpSynthese
             {
                 Joueur joueurImprimé = (Joueur)listBox_Joueur.SelectedItem;
                 policeImpression = this.Font;
-                printDocumentImp.DocumentName = fichierJoueur;
-                printDocumentImp.PrinterSettings.PrinterName = "PDFCreator";
+                string nomFichier = Application.StartupPath + "\\Fiche_" + joueurImprimé.Nom + ".pdf";
+                printDocumentImp.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+                printDocumentImp.PrinterSettings.PrintFileName = nomFichier;
 
-                portionDocImpression = joueurImprimé.ToString();
+                portionDocImpression = "Fiche du Joueur\n\n" +
+                              "Nom : " + joueurImprimé.Nom + "\n" +
+                              "Avatar : " + joueurImprimé.Avatar + "\n" +
+                              "Score Partie : " + joueurImprimé.ScorePartie + "\n" +
+                              "Total Parties : " + joueurImprimé.TotalPartiesJouees + "\n" +
+                              "Score Total : " + joueurImprimé.ScoreTotalParties;
 
                 printDialogImp.Document = printDocumentImp;
+                printDialogImp.Document.DocumentName = nomFichier;
                 printDialogImp.AllowSelection = true;
                 printDialogImp.AllowSomePages = true;
 
-                if (printDialogImp.ShowDialog() == DialogResult.OK)
+                if (printDocumentImp.PrinterSettings.IsValid)
                 {
                     printDocumentImp.Print();
                 }
+                else
+                {
+                    printDialogImp.Document = printDocumentImp;
+                    if (printDialogImp.ShowDialog() == DialogResult.OK)
+                    {
+                        printDocumentImp.Print();
+                    }
+                }
 
                 
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un joueur à imprimer.");
             }
 
 
@@ -414,12 +459,19 @@ namespace tpSynthese
             }
         }
 
+        private void printDocumentImp_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
 
+            Font policeTitre = new Font("Arial", 16, FontStyle.Bold);
+            e.Graphics.DrawString("Propriété du Joueur", policeTitre, Brushes.Black, x, y);
 
+            y += policeTitre.GetHeight(e.Graphics) + 20;
 
+            e.Graphics.DrawString(portionDocImpression, policeImpression, Brushes.Black, x, y);
 
-
-
-
+            e.HasMorePages = false;
+        }
     }
 }
